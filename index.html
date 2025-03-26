@@ -58,7 +58,7 @@
     <div class="container">
       <img src="Tata_logo.png" alt="Tata Motors Logo" />
       <h1>CAS Instruments Tracking System</h1>
-      <p>Welcome to the CAS instrument Tracking System – Powered by Tata Motors.<br>Simplifying device management with effortless scanning. Issue, return with ease.</p>
+      <p>Welcome to the CAS Instrument Tracking System – Powered by Tata Motors.<br>Simplifying device management with effortless scanning. Issue, return with ease.</p>
       
       <a class="btn" id="issueBtn" target="_blank">Issue Device</a>
       <a class="btn return" id="returnBtn" target="_blank">Return Device</a>
@@ -76,12 +76,14 @@
       }
       
       var deviceName = getParameterByName('device_name') || '';
-      var issueFormBase  = "https://docs.google.com/forms/d/e/1FAIpQLSc1HuLyO5Iyyl5x8JJhaSxBe2E3L_NZvVIrPXlq24MkYywnWA/viewform?usp=pp_url";
-      var returnFormBase = "https://docs.google.com/forms/d/e/1FAIpQLSfFlbhwGaXpY-ln9pb9PvimIUDdm4_IqDKWbuaacMh2XW_Bgw/viewform?usp=pp_url";
-      
-      var issueLink = issueFormBase  + "&entry.1735386633="   + encodeURIComponent(deviceName);
-      var returnLink = returnFormBase + "&entry.433682497=" + encodeURIComponent(deviceName);
-      
+
+      // 🔹 Replace these with your actual Microsoft Forms links
+      var issueFormBase  = "https://forms.office.com/r/YOUR-ISSUE-FORM-ID";
+      var returnFormBase = "https://forms.office.com/r/YOUR-RETURN-FORM-ID";
+
+      var issueLink = issueFormBase + "?DeviceName=" + encodeURIComponent(deviceName);
+      var returnLink = returnFormBase + "?DeviceName=" + encodeURIComponent(deviceName);
+
       document.getElementById('issueBtn').setAttribute('href', issueLink);
       document.getElementById('returnBtn').setAttribute('href', returnLink);
     </script>
