@@ -62,37 +62,41 @@
 <a class="btn" id="issueBtn" target="_blank">Issue Device</a>
 <a class="btn return" id="returnBtn" href="javascript:void(0);" onclick="checkPassword()">Return Device</a>
 </div>
+
 <script>
-      function getParameterByName(name) {
-        name = name.replace(/[\[\]]/g, '\\$&');
-        var url = window.location.href;
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-      }
-      var deviceName = getParameterByName('device_name') || '';
-      var issueFormBase  = "https://docs.google.com/forms/d/e/1FAIpQLSc1HuLyO5Iyyl5x8JJhaSxBe2E3L_NZvVIrPXlq24MkYywnWA/viewform?usp=pp_url";
-      var returnFormBase = "https://docs.google.com/forms/d/e/1FAIpQLSfFlbhwGaXpY-ln9pb9PvimIUDdm4_IqDKWbuaacMh2XW_Bgw/viewform?usp=pp_url";
-      var issueLink = issueFormBase  + "&entry.1735386633="   + encodeURIComponent(deviceName);
-      var returnLink = returnFormBase + "&entry.433682497=" + encodeURIComponent(deviceName);
-      document.getElementById('issueBtn').setAttribute('href', issueLink);
+  function getParameterByName(name) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var url = window.location.href;
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
 
-      // Function to check the password before opening the return form
-      function checkPassword() {
-        var correctPassword = "@Safari999"; // Change this to the desired password
-        var enteredPassword = prompt("Please enter the password to return the device:");
+  var deviceName = getParameterByName('device_name') || '';
+  var issueFormBase = "https://docs.google.com/forms/d/e/1FAIpQLSc1HuLyO5Iyyl5x8JJhaSxBe2E3L_NZvVIrPXlq24MkYywnWA/viewform?usp=pp_url";
+  var returnFormBase = "https://docs.google.com/forms/d/e/1FAIpQLSfFlbhwGaXpY-ln9pb9PvimIUDdm4_IqDKWbuaacMh2XW_Bgw/viewform?usp=pp_url";
 
-        // Check if the entered password is correct
-        if (enteredPassword === correctPassword) {
-          window.location.href = returnLink; // Redirect to the return form
-        } else {
-          alert("Incorrect password. Please try again.");
-        }
-      }
+  var issueLink = issueFormBase + "&entry.1735386633=" + encodeURIComponent(deviceName);
+  var returnLink = returnFormBase + "&entry.433682497=" + encodeURIComponent(deviceName);
+  
+  // Set issue device link
+  document.getElementById('issueBtn').setAttribute('href', issueLink);
 
-      document.getElementById('returnBtn').setAttribute('href', returnLink);
+  // Function to check the password before opening the return form
+  function checkPassword() {
+    var correctPassword = "@Safari999"; // Replace this with your desired password
+    var enteredPassword = prompt("Please enter the password to return the device:");
+
+    // Check if the entered password is correct
+    if (enteredPassword === correctPassword) {
+      window.location.href = returnLink; // Redirect to the return form
+    } else {
+      alert("Incorrect password. Please try again.");
+    }
+  }
 </script>
+
 </body>
 </html>
