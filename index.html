@@ -60,7 +60,7 @@
 <h1>CAS Instruments Tracking System</h1>
 <p>Welcome to the CAS instrument Tracking System – Powered by Tata Motors.<br>Simplifying device management with effortless scanning. Issue, return with ease.</p>
 <a class="btn" id="issueBtn" target="_blank">Issue Device</a>
-<a class="btn return" id="returnBtn" target="_blank">Return Device</a>
+<a class="btn return" id="returnBtn" href="javascript:void(0);" onclick="checkPassword()">Return Device</a>
 </div>
 <script>
       function getParameterByName(name) {
@@ -78,6 +78,20 @@
       var issueLink = issueFormBase  + "&entry.1735386633="   + encodeURIComponent(deviceName);
       var returnLink = returnFormBase + "&entry.433682497=" + encodeURIComponent(deviceName);
       document.getElementById('issueBtn').setAttribute('href', issueLink);
+
+      // Function to check the password before opening the return form
+      function checkPassword() {
+        var correctPassword = "@Safari999"; // Change this to the desired password
+        var enteredPassword = prompt("Please enter the password to return the device:");
+
+        // Check if the entered password is correct
+        if (enteredPassword === correctPassword) {
+          window.location.href = returnLink; // Redirect to the return form
+        } else {
+          alert("Incorrect password. Please try again.");
+        }
+      }
+
       document.getElementById('returnBtn').setAttribute('href', returnLink);
 </script>
 </body>
